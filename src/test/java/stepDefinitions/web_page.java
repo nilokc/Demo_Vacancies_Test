@@ -9,6 +9,11 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.openqa.selenium.*;
+import org.openqa.selenium.support.ui.Select;
+
+import java.sql.Driver;
+import java.util.List;
+import java.util.Random;
 
 
 public class web_page extends PageObject_Base {
@@ -18,6 +23,8 @@ public class web_page extends PageObject_Base {
         this.webpage_po = webpage_po;
     }
     private WebDriver driver = getDriver();
+
+
 
 
     @Given("I access the veeam career page")
@@ -59,6 +66,22 @@ public class web_page extends PageObject_Base {
         webpage_po.VerifyVacancyNumberwithWebSiteData();
         System.out.println("Count number of jobs & given number of 'Vacancies open' are expected to be not equal");
     }
+
+    @When("Click All Departments combobox and pick any department")
+    public void click_all_departments_combobox_and_pick_any_department() {
+
+
+        webpage_po.waitForWebElementAndClick(By.xpath("//button[contains(text(),'All departments')]"));
+        int size_dep = driver.findElements(By.xpath("//*[@class='dropdown-item']")).size();
+        int rnd_dep = (int) (Math.random()*(size_dep-1)+2);
+        webpage_po.waitForWebElementAndClick(By.xpath("//*[@id='root']/div/div[1]/div/div/div[1]/div/div[2]/div/div/div/a["+rnd_dep+"]"));
+
+        webpage_po.waitForWebElementAndClick(By.xpath("//button[contains(text(),'All languages')]"));
+        int size_lan = driver.findElements(By.xpath("//*[@class='custom-control-label']")).size();
+        int rnd_lan = (int) (Math.random()*(size_lan));
+        webpage_po.waitForWebElementAndClick(By.xpath("//*[@for='lang-option-"+rnd_lan+"']"));
+    }
+
 
     @Then("Terminate test case")
     public void terminate_test_case() {

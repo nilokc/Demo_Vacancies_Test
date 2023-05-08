@@ -1,11 +1,15 @@
 package PageObject;
 
+import driver.DriverBundle;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import utils.Global_Vars;
 
 import java.util.List;
+import java.util.Random;
 
 import static io.cucumber.messages.internal.com.fasterxml.jackson.core.io.NumberInput.parseInt;
 
@@ -14,6 +18,7 @@ public class webpage_PO extends PageObject_Base {
     private @FindBy(css = "#cookiescript_accept")
     WebElement cookie_button;
 
+    //private @FindBy(id = "sl")
     private @FindBy(id = "sl")
     WebElement category_dropbox;
 
@@ -34,6 +39,12 @@ public class webpage_PO extends PageObject_Base {
 
     private @FindBy(xpath = "//*[@id=\"root\"]/div/div[1]/div/div/div[2]/div/a")
     List<WebElement> open_jobs;
+
+    private @FindBy(xpath = "//*[@id='sl']")
+    List<WebElement> dropdown_category_list;
+
+
+
 
     public webpage_PO() { super(); }
     public void navigateTo_VEEAM_Career_Page() {
@@ -60,6 +71,7 @@ public class webpage_PO extends PageObject_Base {
         System.out.println("This case is for comparing open jobs number (which is filtered) with the data written on webpage -Vacancies Open for all departments and languages" + '\n' + "Vacancies Open :" +parseInt(OpenVacancyNumber.getText()));
         Assert.assertNotEquals(open_jobs.size(),parseInt(OpenVacancyNumber.getText()));
     }
+
 
     public void select_language() {
         waitForWebElementAndClick(Languages);
