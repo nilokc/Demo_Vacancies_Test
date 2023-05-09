@@ -1,4 +1,4 @@
-@test1
+@regression
 Feature: I access the Veeam Vacancy Page
 
   Background:
@@ -7,21 +7,18 @@ Feature: I access the Veeam Vacancy Page
     And Disable Cookie PopUp
     Then Terminate test case
 
-
+  @test1
   Scenario: Validate Successful Veeam URL
     And Click on All Departments combobox and check Research & Development
     And Click on All languages combobox and check English
     And I find the open vacancies and count them
-  #  Then Terminate test case
-
+  @test2
   Scenario: Validate Number of Veeam Jobs with -Vacancies Open Data
     And Click on All Departments combobox and check Research & Development
     And Click on All languages combobox and check English
     And I count open vacancies and verify with number on carrier page
-  #  Then Terminate test case
-
+  @test3
   Scenario: Validate Number of Veeam Jobs with Random filter inputs
     And Click All Departments combobox and pick any department
-    #And Click on All languages and pick any language
     And I count open vacancies and verify with number on carrier page
-   # Then Terminate test case
+

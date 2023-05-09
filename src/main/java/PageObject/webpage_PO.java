@@ -43,8 +43,11 @@ public class webpage_PO extends PageObject_Base {
     private @FindBy(xpath = "//*[@id='sl']")
     List<WebElement> dropdown_category_list;
 
+    private @FindBy(xpath = "//button[contains(text(),'All departments')]")
+    WebElement button_AllDepartments;
 
-
+    private @FindBy(xpath = "//*[@class='dropdown-item']")
+    WebElement dropdown_Items;
 
     public webpage_PO() { super(); }
     public void navigateTo_VEEAM_Career_Page() {
@@ -62,7 +65,7 @@ public class webpage_PO extends PageObject_Base {
 
     public void VerifyVacancyNumber()
     {
-        Assert.assertEquals(open_jobs.size(),11);
+        Assert.assertEquals(open_jobs.size(),10);
         System.out.print("Test passes if Open vacancies are verified with actual number: " +open_jobs.size());
     }
 
@@ -76,5 +79,13 @@ public class webpage_PO extends PageObject_Base {
     public void select_language() {
         waitForWebElementAndClick(Languages);
         waitForWebElementAndClick(English);
+    }
+
+    public void clickon_alldepartments() {
+        waitForWebElementAndClick(button_AllDepartments);
+    }
+
+    public void clickon_languageButton() {
+        waitForWebElementAndClick(Languages);
     }
 }

@@ -71,12 +71,13 @@ public class web_page extends PageObject_Base {
     public void click_all_departments_combobox_and_pick_any_department() {
 
 
-        webpage_po.waitForWebElementAndClick(By.xpath("//button[contains(text(),'All departments')]"));
+        webpage_po.clickon_alldepartments();
+
         int size_dep = driver.findElements(By.xpath("//*[@class='dropdown-item']")).size();
         int rnd_dep = (int) (Math.random()*(size_dep-1)+2);
         webpage_po.waitForWebElementAndClick(By.xpath("//*[@id='root']/div/div[1]/div/div/div[1]/div/div[2]/div/div/div/a["+rnd_dep+"]"));
 
-        webpage_po.waitForWebElementAndClick(By.xpath("//button[contains(text(),'All languages')]"));
+        webpage_po.clickon_languageButton();
         int size_lan = driver.findElements(By.xpath("//*[@class='custom-control-label']")).size();
         int rnd_lan = (int) (Math.random()*(size_lan));
         webpage_po.waitForWebElementAndClick(By.xpath("//*[@for='lang-option-"+rnd_lan+"']"));
